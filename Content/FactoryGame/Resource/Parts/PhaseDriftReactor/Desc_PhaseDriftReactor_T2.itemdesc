@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FGItemDescriptor
+    ClassName="Desc_PhaseDriftReactor_T2_C"
+    Parent="FGItemDescriptor"
+    mDisplayName="Phase Drift Reactor (T2 — Drift Coil)"
+    mDescription="Industrial-grade PDR. Cap: 500 MW. Recommended for mid-game factory floors."
+    mTechTier="8"
+    mStackSize="50"
+    mCanBeDiscarded="false"
+    mForm="SOLID"
+/>

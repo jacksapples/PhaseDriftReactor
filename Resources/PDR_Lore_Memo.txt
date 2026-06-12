@@ -1,0 +1,73 @@
+=== PHASE DRIFT REACTOR — R&D INTERNAL MEMO ===
+Author: Dr. Halvar Kølle, FICSIT Phlogiston Division
+Status: RECOVERED FROM CRATE 7
+Classification: OPEN — Pioneer Deployment Authorized
+
+EXECUTIVE SUMMARY
+=================
+
+The Phase Drift Reactor (PDR) is a stationary, fuel-less electrical
+generator that exploits a previously unknown property of the
+planet's geomagnetic / informational substrate, which FICSIT
+Phlogiston Division has provisionally named the "Coherence Field."
+
+Pioneers in the field report that the PDR produces power in direct
+proportion to the operational entropy of nearby machinery: a
+factory floor with active conveyors, running splitters, smelters,
+and constructors produces measurably MORE power than an idle or
+empty one. The effect has been reproduced 312/312 times.
+
+MECHANICS
+=========
+
+1. ENTROPY-TAP BASELINE
+   The PDR samples the local coherence gradient within a
+   configurable radius (default 96m). It counts active
+   production buildings, moving conveyor belts, and engaged
+   power consumers as "entropy events" per second.
+   Baseline output is 50 MW at zero events. Each event adds
+   0.5 MW. The PDR is throttled to its tier cap.
+
+2. DARKNESS BONUS (UNDERGROUND)
+   When the PDR has no direct line-of-sight to the open sky
+   (i.e. it is enclosed, underground, or under a thick
+   foundation), output is multiplied by 1.6x. Phlogiston
+   Division hypothesizes that the open sky carries a
+   "decoherence" component that the device partially cancels.
+
+3. PHASE-LOCK SYNERGY
+   When two or more PDRs are within 256m of each other and
+   connected to the same power grid, they enter "phase lock."
+   Locked reactors share entropy samples and stack their
+   output multiplicatively: 2 PDRs = 1.45x combined, 3 PDRs
+   = 1.85x, 4 PDRs = 2.20x (capped at 2.5x with 6+ units).
+   This is the optimal endgame topology for high-MW factories.
+
+4. TIER PROGRESSION
+   The PDR ships in 4 variants, each unlocked through
+   standard FICSIT hard-drive milestones:
+     T0 "Coherence Tap"        50 MW cap  -- Hub Tier 4
+     T1 "Phase Anchor"        200 MW cap  -- Hub Tier 6
+     T2 "Drift Coil"          500 MW cap  -- Hub Tier 8
+     T3 "Entropic Resonator" 1000 MW cap  -- AWESOME Shop
+   The player may only build ONE tier at a time per PDR
+   (tier is set in the build UI). Upgrading in-place
+   requires demolition and rebuilding.
+
+5. STABILITY PENALTY (ANTI-CHEESE)
+   To prevent a "single PDR cheesing" strategy, the device
+   enters a 30-minute cooldown if it is ever the SOLE
+   producer on a grid. This resets if any non-PDR generator
+   comes online. Pioneer feedback was clear: this prevents
+   trivializing the power progression curve.
+
+WARNING
+=======
+Phlogiston Division reminds all Pioneers that, in the event of
+a PDR emitting an audible high-pitched whine lasting more than
+90 seconds, the unit should be switched off and not approached
+for at least 4 hours. There have been no reported incidents.
+This warning is included per the FICSIT R&D Style Guide, Section
+14.3, "Precautionary Language for Untested Devices."
+
+— End of memo —

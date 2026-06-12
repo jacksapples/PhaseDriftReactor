@@ -1,0 +1,161 @@
+================================================================================
+PhaseDriftReactor — Power Output Algorithm
+================================================================================
+
+This is the canonical specification for the runtime power output formula
+that the Phase Drift Reactor uses. It is implemented in C++ in the SML
+plugin module PhaseDriftReactorModule.cpp as
+
+    float UPhaseDriftReactorStatics::ComputePowerMW(
+        AFGBuildablePhaseDriftReactor* Reactor,
+        TSubclassOf<UFGPowerInfo> OutputInfo,
+        float DeltaTime)
+
+and exposed to BP for use in the building's Tick logic. The BP-side
+graph in Build_PhaseDriftReactor calls this function on Tick (every
+0.5s) and applies the returned MW to its mTargetPowerProduction.
+
+--------------------------------------------------------------------------------
+GLOBAL CONSTANTS (FROZEN — DO NOT TUNE AT RUNTIME)
+--------------------------------------------------------------------------------
+
+    ENTROPY_RADIUS_M              = 9600.0f  // 96m radius
+    PHASELOCK_RADIUS_M            = 25600.0f // 256m radius
+    ENTROPY_EVENT_WEIGHT          = 0.5f     // MW per event/sec, pre-cap
+    DARKNESS_MULTIPLIER           = 1.6f
+    PHASELOCK_BONUS_2             = 1.45f
+    PHASELOCK_BONUS_3             = 1.85f
+    PHASELOCK_BONUS_4             = 2.20f
+    PHASELOCK_BONUS_5             = 2.40f
+    PHASELOCK_BONUS_6_PLUS        = 2.50f
+    SOLE_PRODUCER_GRACE_SECONDS   = 1800.0f  // 30 minutes
+    TIER_CAPS_MW                  = { 50, 200, 500, 1000 }
+
+--------------------------------------------------------------------------------
+INPUTS
+--------------------------------------------------------------------------------
+
+    ReactorTier        : int in [0..3]
+    ReactorPosition    : FVector
+    WorldContext       : UWorld*  (for queries)
+    ConnectedGrid      : UFGPowerCircuit*  (for sole-producer check)
+    PhaseLockedPeers   : int   (count of PDRs within PHASELOCK_RADIUS_M
+                                 connected to the same power circuit)
+
+--------------------------------------------------------------------------------
+STEP 1 — Entropy Event Count
+--------------------------------------------------------------------------------
+
+    count := 0
+
+    For each AFGBuildableFactory B within ENTROPY_RADIUS_M of
+    ReactorPosition:
+        If B is a production building and B.IsProductionActive():
+            count += 1
+        Else if B is a conveyor pole/mk and the connected belt
+              segment has moved at least 1 unit in the last second:
+            count += 1
+        Else if B is a power pole and a circuit is connected:
+            count += 1   // power poles are "entropy carriers" too
+        Else if B is a PDR (this or any other):
+            count += 0   // PDRs do not count themselves (anti-spam)
+
+    // OPTIONAL: tier-3 bonus. If a TimeCrystal-class item is in any
+    // connected storage container within the radius, add 25 flat
+    // events as a "resonance source" perk.
+    if ReactorTier == 3 and AnyContainerNearHasItem(TimeCrystal):
+        count += 25
+
+    eventsPerSecond := count * (1.0 / DeltaTime)   // events per second
+
+--------------------------------------------------------------------------------
+STEP 2 — Baseline Power
+--------------------------------------------------------------------------------
+
+    baselineMW := eventsPerSecond * ENTROPY_EVENT_WEIGHT
+
+    // Floor: even at zero events, the T0 reactor produces 2 MW
+    // (a "hum" the device makes idling). This is intentional flavor.
+    if baselineMW < 2.0f:
+        baselineMW = 2.0f
+
+--------------------------------------------------------------------------------
+STEP 3 — Darkness Bonus
+--------------------------------------------------------------------------------
+
+    isDark := not Reactor.HasLineOfSightToOpenSky()   // raycast straight up
+    if isDark:
+        baselineMW *= DARKNESS_MULTIPLIER
+
+--------------------------------------------------------------------------------
+STEP 4 — Phase-Lock Multiplier
+--------------------------------------------------------------------------------
+
+    // The reactor's own PDR count plus the supplied
+    // PhaseLockedPeers should not double-count, so we trust the
+    // caller-provided PhaseLockedPeers (which was computed
+    // upstream by the only-PDR iteration).
+    switch PhaseLockedPeers:
+        case 1:  baselineMW *= PHASELOCK_BONUS_2
+        case 2:  baselineMW *= PHASELOCK_BONUS_3
+        case 3:  baselineMW *= PHASELOCK_BONUS_4
+        case 4:  baselineMW *= PHASELOCK_BONUS_5
+        default: baselineMW *= PHASELOCK_BONUS_6_PLUS
+
+--------------------------------------------------------------------------------
+STEP 5 — Sole-Producer Penalty
+--------------------------------------------------------------------------------
+
+    if ConnectedGrid is not null and ConnectedGrid.IsValid():
+        isSoleProducer := ConnectedGrid.GetProducerCount() == 1
+                          and ConnectedGrid.GetProducer(0) == Reactor
+        if isSoleProducer:
+            // After 30 minutes of being the only producer on the grid,
+            // the device begins a slow ramp-down.
+            if Reactor.SoleProducerSeconds >= SOLE_PRODUCER_GRACE_SECONDS:
+                rampFactor := clamp(
+                    1.0f - (Reactor.SoleProducerSeconds
+                            - SOLE_PRODUCER_GRACE_SECONDS) / 3600.0f,
+                    0.0f, 1.0f)
+                baselineMW *= rampFactor
+            else:
+                Reactor.SoleProducerSeconds += DeltaTime
+        else:
+            Reactor.SoleProducerSeconds = 0.0f
+    else:
+        // Disconnected from the grid: do NOT throttle. The PDR
+        // is happy to run "offline" — it just doesn't help anyone
+        // until it's reconnected. This is intentional: a buffer.
+        pass
+
+--------------------------------------------------------------------------------
+STEP 6 — Tier Cap
+--------------------------------------------------------------------------------
+
+    capMW := TIER_CAPS_MW[ReactorTier]
+    if baselineMW > capMW:
+        baselineMW = capMW
+
+    // Sanity floor: never below 2 MW even when the player has
+    // nothing else in the world.
+    if baselineMW < 2.0f:
+        baselineMW = 2.0f
+
+--------------------------------------------------------------------------------
+STEP 7 — Smoothed Output (avoids flicker)
+--------------------------------------------------------------------------------
+
+    // Apply a 1.5s exponential moving average so that rapid changes
+    // in factory activity (a single machine toggling) don't make the
+    // power meter dance.
+    smoothing := 0.15f
+    Reactor.SmoothedOutputMW = lerp(
+        Reactor.SmoothedOutputMW,
+        baselineMW,
+        smoothing)
+
+    return Reactor.SmoothedOutputMW
+
+--------------------------------------------------------------------------------
+END OF SPEC
+================================================================================

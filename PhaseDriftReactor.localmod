@@ -1,0 +1,9 @@
+{
+  "id": "PhaseDriftReactor",
+  "version": "1.0.0",
+  "source": "local",
+  "smModFile": "PhaseDriftReactor_v1.0.0.smmod",
+  "installedAt": 1750000000,
+  "gameVersion": ">=493833.0.0",
+  "smlVersion": ">=3.1.1"
+}

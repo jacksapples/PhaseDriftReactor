@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  PhaseDriftReactor.hologram
+  Hologram/placement rules for the Phase Drift Reactor.
+  Mirrors the schema that Satisfactory's BuildableFactory uses
+  for hologram descriptors in the BP mod system.
+-->
+<HologramDescriptor
+    ClassName="Build_PhaseDriftReactor_Holo"
+    Parent="FGBuildableHologram"
+    mHologramType="HT_DEFAULT"
+    mDisallowedSnapAngles=""
+    mRuleSnap="RS_FLOOR"
+    mPlacementRule="PR_FLOOR"
+    mMinValidPlacementDepth="-200.0"
+    mMaxValidPlacementDepth="500.0"
+    mRequiresHologramToPlaceOnGround="true"
+    mClearance="900.0"
+    mClearanceBoxMin="0,0,0"
+    mClearanceBoxMax="0,0,0"
+    mRequiresSuit="false"
+    mRequiresPower="false"
+    mRotationalSnap="30.0"
+/>

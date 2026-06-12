@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T2 — Drift Coil, 500 MW cap, late-game materials -->
+<Recipe
+    Name="Recipe_PhaseDriftReactor_T2"
+    ClassName="Recipe_PhaseDriftReactor_T2_C"
+    mDisplayName="Phase Drift Reactor (Tier 2 — Drift Coil)"
+    mIngredients="
+        Desc_IronPlateReinforced=400;
+        Desc_IronFrame=200;
+        Desc_Cable=100;
+        Desc_Rotor=50;
+        Desc_Stator=50;
+        Desc_HighSpeedWire=30;
+        Desc_MotorLightweight=20"
+    mProduct="Desc_PhaseDriftReactor_T2"
+    mManufactoringDuration="120"
+    mManualManufacturingMultiplier="1.0"
+    mProducedIn="Desc_BuildableManufacturer_C"
+/>

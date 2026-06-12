@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FGItemDescriptor
+    ClassName="Desc_PhaseDriftReactor_T0_C"
+    Parent="FGItemDescriptor"
+    mDisplayName="Phase Drift Reactor (T0 — Coherence Tap)"
+    mDescription="A FICSIT R&D prototype that taps coherence gradients in the planetary information field. Produces electrical power without any fuel input, scaling with the local factory's operational entropy. Cap: 50 MW."
+    mCategory="Equipment"
+    mSubCategory="Power"
+    mTechTier="4"
+    mStackSize="50"
+    mCanBeDiscarded="false"
+    mForm="SOLID"
+    mResourceSinkPoints="0"
+    mEnergyValue="0"
+    mRadioactiveDecay="0"
+    mBuildMenuPriority="11"
+    mBuildMenuIcon="PhaseDriftReactor_64"
+/>

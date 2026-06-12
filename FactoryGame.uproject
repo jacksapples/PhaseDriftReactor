@@ -1,0 +1,32 @@
+{
+    "FileVersion": 3,
+    "EngineAssociation": "5.3",
+    "Category": "Mod",
+    "Description": "Phase Drift Reactor \u2014 entropy-tap generator mod for SML 3.x",
+    "Modules": [
+        {
+            "Name": "PhaseDriftReactor",
+            "Type": "Runtime",
+            "LoadingPhase": "PostConfigInit",
+            "PlatformAllowList": [
+                "Win64"
+            ]
+        }
+    ],
+    "Plugins": [
+        {
+            "Name": "SML",
+            "Enabled": true,
+            "TargetAllowList": [
+                "Game"
+            ]
+        },
+        {
+            "Name": "FICSITNetworks",
+            "Enabled": true,
+            "TargetAllowList": [
+                "Game"
+            ]
+        }
+    ]
+}

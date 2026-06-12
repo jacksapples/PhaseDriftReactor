@@ -1,0 +1,21 @@
+[Item]
+Name=Phase Drift Reactor
+Description=A FICSIT R&D prototype that taps coherence gradients in the planetary information field. Produces electrical power without any fuel input, scaling with the local factory's operational entropy.
+Category=Power Generation
+SubCategory=Entropy Tap
+TechTier=4
+UnlockedBy=PhaseDriftReactor_Tech_0
+Manufacturer=FICSIT R&D "Phlogiston" Division
+MfgYear=Unknown (recovered from crashed cargo)
+ModelNumber=PDR-IV-Ω
+Mass=12000
+CanBeDiscarded=false
+ResourceSinkPoints=0
+FluidBarrel=0
+EnergyValue=0
+RadioactiveDecay=0
+RemindInputStack=false
+[aesthetic]
+PrimaryTint=F4D03F
+SecondaryTint=6C3483
+EmissiveTint=58D68D

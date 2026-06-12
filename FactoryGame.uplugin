@@ -1,0 +1,28 @@
+{
+    "FileVersion": 3,
+    "Version": 1,
+    "VersionName": "1.0.0",
+    "FriendlyName": "Phase Drift Reactor",
+    "Description": "An entropy-tap generator that produces power from game-state coherence. No fuel input. Tier 0/1/2/3 with phase-locking synergy between paired reactors.",
+    "Category": "Power",
+    "CreatedBy": "JacksApples",
+    "CreatedByURL": "https://github.com/jacksapples",
+    "DocsURL": "",
+    "MarketplaceURL": "",
+    "SupportURL": "https://discord.gg/satisfactorymodding",
+    "EnabledByDefault": true,
+    "CanContainContent": true,
+    "IsBetaVersion": false,
+    "Installed": false,
+    "GameVersion": ">=493833.0.0",
+    "EngineVersion": ">=5.3.0",
+    "SMLVersion": ">=3.1.1",
+    "Dependencies": {},
+    "Modules": {
+        "PhaseDriftReactor": {
+            "Name": "PhaseDriftReactor",
+            "Type": "ContentOnly",
+            "LoadingPhase": "PostConfigInit"
+        }
+    }
+}

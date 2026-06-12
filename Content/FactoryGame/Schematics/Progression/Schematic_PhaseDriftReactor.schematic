@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Schematic_PhaseDriftReactor — a single schematic that unlocks
+  all 4 tiers, gated by the player's Hub progress.
+  The schematic itself is found in an AWESOME shop rotation
+  after Hub Tier 4 is reached, in keeping with vanilla cadence.
+-->
+<Schematic
+    Name="Schematic_PhaseDriftReactor"
+    ClassName="Schematic_PhaseDriftReactor_C"
+    Type="EST_Custom"
+    mDisplayName="PHASE DRIFT REACTOR"
+    mSubCategories="Power,Generator,Entropy"
+    mTechTier="4"
+    mTimeToComplete="180"
+    mCostItem="Desc_Coupon=50"
+    mUnlocks="
+        Recipe_PhaseDriftReactor_T0;
+        Recipe_PhaseDriftReactor_T1;
+        Recipe_PhaseDriftReactor_T2;
+        Recipe_PhaseDriftReactor_T3"
+    mDependencies=""
+    mVisibleIfPurchased="true"
+    mIcon="PhaseDriftReactor_64"
+/>

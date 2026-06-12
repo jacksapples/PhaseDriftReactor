@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FGItemDescriptor
+    ClassName="Desc_PhaseDriftReactor_T3_C"
+    Parent="FGItemDescriptor"
+    mDisplayName="Phase Drift Reactor (T3 — Entropic Resonator)"
+    mDescription="Endgame PDR. Cap: 1000 MW. Phase-locks with extraordinary synergy. Produces +25 baseline events when a Time Crystal is stored within range."
+    mTechTier="9"
+    mStackSize="50"
+    mCanBeDiscarded="false"
+    mForm="SOLID"
+/>

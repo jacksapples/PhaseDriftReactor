@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T1 — Phase Anchor, 200 MW cap, costs include rotors and stators -->
+<Recipe
+    Name="Recipe_PhaseDriftReactor_T1"
+    ClassName="Recipe_PhaseDriftReactor_T1_C"
+    mDisplayName="Phase Drift Reactor (Tier 1 — Phase Anchor)"
+    mIngredients="
+        Desc_IronPlateReinforced=200;
+        Desc_IronFrame=80;
+        Desc_Cable=40;
+        Desc_Rotor=20;
+        Desc_Stator=10"
+    mProduct="Desc_PhaseDriftReactor_T1"
+    mManufactoringDuration="60"
+    mManualManufacturingMultiplier="1.0"
+    mProducedIn="Desc_BuildableManufacturer_C"
+/>

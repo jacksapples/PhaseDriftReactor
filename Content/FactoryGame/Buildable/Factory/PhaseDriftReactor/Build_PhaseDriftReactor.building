@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Build_PhaseDriftReactor.building
+  Class: FGBuildableGenerator (so it inherits the standard
+         power-producing connection logic, fuse box integration,
+         power display, etc.)
+  Power: variable, computed every tick by FGBuildablePhaseDriftReactor
+  Visual: a tall thin pillar with a spinning glass containment
+          ring at the top. Emissive scale modulates with the
+          current output (visible feedback).
+-->
+<BuildingDescriptor
+    ClassName="Build_PhaseDriftReactor_C"
+    Parent="FGBuildableGenerator"
+    mDisplayName="Phase Drift Reactor"
+    mDescription="Taps coherence gradients in the planetary information field. No fuel required. Output scales with operational entropy of nearby machinery."
+    mMaxRenderDistance="50000.0"
+    mIsPersistent="true"
+    mIsPlaceable="true"
+    mIsStackable="false"
+    mCanBeReinforced="true"
+    mIsUseable="true"
+    mIsValidPlacementClearanceBox="900.0"
+    mDismantleRefundMultiplier="0.5"
+
+    mPowerProductionCapacity="0.0"     ; Computed at runtime
+    mPowerProductionEfficiency="1.0"
+    mPowerInfoClass="FGPowerInfo"
+
+    mHologramClass="Build_PhaseDriftReactor_Holo_C"
+    mBuildEffectClass="FX_HologramBuild_C"
+    mDismantleEffectClass="FX_Dismantle_C"
+
+    mCustomisationData=""
+    mShouldShowMirrorMesh="false"
+
+    mTierAssetName="PhaseDriftReactor"
+    mAllowedDismantleTags="Buildable,Factory,Power"
+>
+    <BuildableCategories>
+        <Category>FGBuildableCategory::Power</Category>
+        <Category>FGBuildableCategory::Generator</Category>
+    </BuildableCategories>
+</BuildingDescriptor>

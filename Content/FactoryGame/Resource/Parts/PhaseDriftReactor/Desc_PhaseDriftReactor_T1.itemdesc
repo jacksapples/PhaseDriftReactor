@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FGItemDescriptor
+    ClassName="Desc_PhaseDriftReactor_T1_C"
+    Parent="FGItemDescriptor"
+    mDisplayName="Phase Drift Reactor (T1 — Phase Anchor)"
+    mDescription="A reinforced PDR variant. Cap: 200 MW. Same entropy-driven mechanism, with improved phase-lock coupling between paired units."
+    mTechTier="6"
+    mStackSize="50"
+    mCanBeDiscarded="false"
+    mForm="SOLID"
+/>

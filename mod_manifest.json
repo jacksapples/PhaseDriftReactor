@@ -1,0 +1,13 @@
+{
+  "FormatVersion": 2,
+  "Version": "1.0.0",
+  "Name": "PhaseDriftReactor",
+  "Author": "JacksApples",
+  "Description": "Phase Drift Reactor \u2014 entropy-tap generator. No fuel. Tier 0/1/2/3. Phase-locking synergy.",
+  "GameVersion": ">=493833.0.0",
+  "SMLVersion": ">=3.1.1",
+  "EngineVersion": ">=5.3.0",
+  "ContentPack": true,
+  "HasCode": true,
+  "IsLoaded": true
+}

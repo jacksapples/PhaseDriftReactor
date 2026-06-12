@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  PhaseDriftReactor.recipe (T0 — Coherence Tap)
+  Cost: 50 Reinforced Iron Plate, 20 Modular Frame, 10 Cable
+  Output: 50 MW generator (entropy-scaled, capped at 50 MW)
+-->
+<Recipe
+    Name="Recipe_PhaseDriftReactor_T0"
+    ClassName="Recipe_PhaseDriftReactor_T0_C"
+    mDisplayName="Phase Drift Reactor (Tier 0 — Coherence Tap)"
+    mIngredients="
+        Desc_IronPlateReinforced=50;
+        Desc_IronFrame=20;
+        Desc_Cable=10"
+    mProduct="Desc_PhaseDriftReactor_T0"
+    mManufactoringDuration="30"
+    mManualManufacturingMultiplier="1.0"
+    mProducedIn="Desc_BuildableManufacturer_C"
+/>

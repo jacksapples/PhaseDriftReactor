@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- T3 — Entropic Resonator, 1000 MW cap, AWESOME shop material (dark matter residue + quantum stuff) -->
+<Recipe
+    Name="Recipe_PhaseDriftReactor_T3"
+    ClassName="Recipe_PhaseDriftReactor_T3_C"
+    mDisplayName="Phase Drift Reactor (Tier 3 — Entropic Resonator)"
+    mIngredients="
+        Desc_IronPlateReinforced=800;
+        Desc_IronFrame=400;
+        Desc_Cable=200;
+        Desc_HighSpeedWire=100;
+        Desc_MotorLightweight=50;
+        Desc_QuantumOscillator=10;
+        Desc_DarkMatterCrystal=4;
+        Desc_TimeCrystal=4"
+    mProduct="Desc_PhaseDriftReactor_T3"
+    mManufactoringDuration="240"
+    mManualManufacturingMultiplier="1.0"
+    mProducedIn="Desc_BuildableManufacturer_C"
+/>
